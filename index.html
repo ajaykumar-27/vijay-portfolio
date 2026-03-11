@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cinematic Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;background:#f5f1e8;color:#000;overflow-x:hidden}
+
+/* ===== INTRO ===== */
+.intro{position:relative;height:100vh;overflow:hidden}
+.intro video{width:100%;height:100%;object-fit:cover}
+.overlay{
+  position:absolute;inset:0;
+  background:rgba(0,0,0,.6);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center
+}
+.overlay img{
+  width:200px;height:200px;border-radius:50%;
+  border:3px solid #fff;margin-bottom:20px
+}
+.overlay h1{font-size:48px;letter-spacing:3px;color:#f5f1e8}
+.overlay p{margin-top:8px;font-size:22px;letter-spacing:2px;color:#f5f1e8}
+
+/* ===== SECTION ===== */
+.section{margin:60px 0}
+.section h2{
+  margin:0 20px 15px;
+  letter-spacing:3px;font-size:24px;text-transform:uppercase
+}
+
+/* ===== AUTO SCROLL ===== */
+.scroll-wrapper{overflow:hidden}
+.horizontal{
+  display:flex;gap:15px;width:max-content;
+  padding:10px 20px;
+  animation:scroll 35s linear infinite
+}
+.scroll-wrapper:hover .horizontal{animation-play-state:paused}
+
+@keyframes scroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* ===== CARD ===== */
+.card{
+  position:relative;
+  min-width:260px;height:460px;
+  border-radius:12px;
+  overflow:hidden;background:#000;
+  cursor:pointer
+}
+.card video,.card img{
+  width:100%;height:100%;object-fit:cover
+}
+.reels .card{
+  min-width:260px;
+  height:460px;
+}
+
+
+/* ===== WATERMARK ===== */
+.watermark{
+  position:absolute;
+  bottom:10px;right:10px;
+  font-size:11px;
+  letter-spacing:2px;
+  opacity:.6;
+  text-transform:uppercase
+}
+
+/* ===== FULLSCREEN POPUP ===== */
+.popup{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.95);
+  display:none;
+  align-items:center;justify-content:center;
+  z-index:999
+}
+.popup video{
+  width:90%;height:90%;
+  object-fit:contain
+}
+.close{
+  position:absolute;
+  top:20px;right:30px;
+  font-size:30px;
+  cursor:pointer
+}
+
+/* ===== TOOLS ===== */
+.tools{
+  display:flex;justify-content:center;
+  gap:30px;flex-wrap:wrap;
+  padding:20px;letter-spacing:2px
+}
+
+/* ===== BOOK ===== */
+.book{
+  background:#e8e2d6;text-align:center;
+  padding:70px 20px
+}
+.book button{
+  padding:14px 30px;background:#fff;
+  border:none;cursor:pointer
+}
+
+/* ===== CONTACT ===== */
+.contact{text-align:center;padding:60px 20px}
+.contact a{
+  display:inline-block;margin-top:20px;
+  padding:15px 30px;
+  background:#25D366;color:#000;
+  text-decoration:none;font-weight:bold
+}
+
+@media(max-width:768px){
+  .card{min-width:220px;height:380px}
+}
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.overlay img{
+  animation:fadeUp 1s ease forwards;
+}
+
+.overlay h1{
+  animation:fadeUp 1.5s ease forwards;
+}
+
+.overlay p{
+  animation:fadeUp 2s ease forwards;
+}
+.scroll-arrow{
+position:absolute;
+bottom:100px;
+left:50%;
+width:60px;
+height:60px;
+border-right:4px solid #f5f1e8;
+border-bottom:4px solid #f5f1e8;
+transform:translateX(-50%) rotate(45deg);
+animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+0%,100%{
+transform:translate(-50%,0) rotate(45deg);
+}
+50%{
+transform:translate(-50%,10px) rotate(45deg);
+}
+}
+html{
+scroll-behavior:smooth;
+}
+@media (max-width:768px){
+
+.scroll-arrow{
+bottom:80px;
+width:45px;
+height:45px;
+}
+
+}
+@media (max-width:768px){
+
+.overlay h1{
+font-size:34px;
+}
+
+.overlay p{
+font-size:18px;
+}
+
+.overlay img{
+width:150px;
+height:150px;
+}
+
+.card{
+min-width:200px;
+height:360px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<div class="intro">
+<video muted loop autoplay src="videos/adds/add1.mp4"></video>
+  
+  <div class="overlay">
+    <img src="images/image10.jpeg">
+    <h1>vijay karthik</h1>
+    <p>DOP | EDITOR | PHOTOGRAPHER</p>
+  <div class="scroll-arrow" onclick="scrollDown()"></div>
+
+
+  </div>
+</div>
+
+
+<!-- SHOOTS -->
+<div class="section">
+<h2>Shoots</h2>
+<div class="scroll-wrapper"><div class="horizontal">
+<div class="card" onclick="openVideo(this)">
+<video muted loop autoplay src="videos/shoots/shoot1.mp4"></video>
+<div class="watermark">vk</div></div>
+
+<div class="card" onclick="openVideo(this)">
+<video muted loop autoplay src="videos/shoots/shoot2.mp4"></video>
+<div class="watermark">vk</div></div>
+
+<div class="card" onclick="openVideo(this)">
+<video muted loop autoplay src="videos/shoots/shoot3.mp4"></video>
+<div class="watermark">vk</div></div>
+
+
+</div></div>
+</div>
+
+<!-- ADDS -->
+<div class="section">
+<h2>Adds</h2>
+<div class="scroll-wrapper"><div class="horizontal">
+<div class="card" onclick="openVideo(this)">
+<video muted loop autoplay src="videos/adds/add1.mp4"></video>
+<div class="watermark">vk</div></div>
+
+<div class="card" onclick="openVideo(this)">
+<video muted loop autoplay src="videos/adds/add2.mp4"></video>
+<div class="watermark">vk</div></div>
+
+<div class="card" onclick="openVideo(this)">
+<video muted loop autoplay src="videos/adds/add3.mp4"></video>
+<div class="watermark">vk</div></div>
+
+</div></div>
+</div>
+
+
+<!-- REELS -->
+<div class="section">
+<h2>Reels</h2>
+<div class="scroll-wrapper">
+<div class="horizontal reels">
+
+<div class="card" onclick="openVideo(this)">
+<video muted loop autoplay src="videos/reels/reel1.mp4"></video>
+<div class="watermark">vk</div>
+</div>
+
+<div class="card" onclick="openVideo(this)">
+<video muted loop autoplay src="videos/reels/reel2.mp4"></video>
+<div class="watermark">vk</div>
+</div>
+
+<div class="card" onclick="openVideo(this)">
+<video muted loop autoplay src="videos/reels/reel3.mp4"></video>
+<div class="watermark">vk</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- IMAGES -->
+<div class="section">
+<h2>Images</h2>
+<div class="scroll-wrapper"><div class="horizontal">
+<img class="card" src="images/image1.jpeg">
+<img class="card" src="images/image2.jpeg">
+<img class="card" src="images/image3.jpeg">
+<img class="card" src="images/image4.jpeg">
+<img class="card" src="images/image5.jpeg">
+<img class="card" src="images/image6.jpeg">
+<img class="card" src="images/image7.jpeg">
+<img class="card" src="images/image8.jpeg">
+<img class="card" src="images/image9.jpeg">
+</div></div>
+</div>
+
+<!-- TOOLS -->
+<div class="section">
+<h2>Tools Used</h2>
+<div class="tools">
+<div>Premiere Pro</div>
+<div>After Effects</div>
+<div>DaVinci Resolve</div>
+<div>Photoshop</div>
+<div>Lightroom</div>
+</div>
+</div>
+
+<!-- BOOK -->
+<div class="book">
+<h2>Book a Project</h2>
+<a href="https://wa.me/917842577236?text=Hi%20I%20saw%20your%20portfolio"
+   target="_blank"
+   class="book-btn">
+   Contact Me
+</a>
+</div>
+
+<div class ="contact">
+  <h2>Let’s Work Together</h2>
+  <p>Available for shoots, ads & edits</p>
+
+  <a class="whatsapp-btn"
+ href="https://wa.me/917842577236?text=Hi%20I%20saw%20your%20portfolio"
+ target="_blank">
+
+<img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png"
+style="width:20px; vertical-align:middle; margin-right:8px;">
+WhatsApp Me
+</a>
+</div>
+
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+<span class="close" onclick="closeVideo()">×</span>
+<video controls autoplay></video>
+</div>
+
+<script>
+function openVideo(card){
+  const src = card.querySelector("video").src;
+  const popup = document.getElementById("popup");
+  const video = popup.querySelector("video");
+  video.src = src;
+  video.muted = false;
+  popup.style.display="flex";
+}
+
+function closeVideo(){
+  const popup = document.getElementById("popup");
+  const video = popup.querySelector("video");
+  video.pause();
+  video.src="";
+  popup.style.display="none";
+}
+</script>
+<script>
+
+function scrollDown(){
+window.scrollBy({
+top: window.innerHeight,
+behavior: "smooth"
+});
+}
+
+</script>
+</body>
+</html>
